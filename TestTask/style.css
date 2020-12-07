@@ -1,0 +1,203 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    position: relative;
+    height: 100vh;
+}
+
+.section{
+    position: absolute;
+    top: 100px;
+    width: 100%;
+    height: fit-content;
+    z-index: 0;
+}
+
+.section__content-div{
+    padding: 10px;
+    min-height: 150px;
+    line-height: 40px;
+}
+
+.menu {
+    width: 100%;
+    height: 60px;
+    position: absolute;
+    display: flex;
+    background-color: rgb(253, 0, 0);
+    align-items: center;
+    padding: 0 10px;
+    z-index: 10;
+}
+
+.menu ul {
+    height: fit-content;
+    position: relative;
+    display: block;
+    list-style: none;
+    float: right;
+    background-color: rgb(253, 0, 0);
+    z-index: 0;
+}
+
+.menu li {
+    display: block;
+    position: relative;
+    float: left;
+    line-height: 60px;
+    height: 100%;
+    min-width: 120px;
+    align-items: center;
+    white-space: nowrap;
+    transition-duration: 0.4s;
+    z-index: 2;
+}
+
+.menu a {
+    text-decoration: none;
+    color: blanchedalmond;
+    margin-left: 10px;
+    width: 100%;
+}
+
+.menu ul ul {
+    display: none;
+    position: absolute;
+    float: right;
+}
+
+.menu ul ul ul {
+    position: relative;
+    left: 100%;
+    top: 0;
+}
+
+.menu__expand-button {
+    float: right;
+    position: relative;
+    height: 30%;
+    background: none;
+    border: none;
+    color: blanchedalmond;
+    line-height: 60px;
+    margin-right: 5px;
+    outline: 0;
+}
+
+.menu__burger-button {
+    display: none;
+    background: none;
+    border: none;
+    padding: 3px;
+    outline: 0;
+}
+
+.menu__burger-button::before {
+    display: inline-block;
+    content: "";
+    background-image: url(/TestTask/img/menu.png);
+    width: 40px;
+    height: 40px;
+    background-size: 100%;
+    margin-right: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+@media (min-width: 1025px) {
+    .menu li:hover>ul {
+        display: flex;
+        position: absolute;
+        flex-direction: column;
+    }
+    .menu li:hover {
+        background-color: rgba(34, 33, 33, 0.959);
+    }
+}
+
+@media all and (max-width: 1024px) {
+    .menu {
+        justify-content: flex-end;
+        padding: 0;
+    }
+    .menu .menu__burger-button {
+        position: absolute;
+        display: block;
+        float: right;
+    }
+    .menu .menu__burger-button.active::before {
+        background-image: url(/TestTask/img/close.png);
+        transform: rotate(360deg);
+    }
+    .menu>ul {
+        max-height: 100vh;
+        overflow-y: scroll;
+    }
+    .menu ul {
+        display: none;
+        position: absolute;
+        float: none;
+        background-color: rgba(0, 0, 0, 0.863);
+        width: 50%;
+        top: 100%;
+        right: 0%;
+    }
+    .menu .unhidden {
+        display: block;
+    }
+    .menu ul ul.unhidden {
+        position: relative;
+    }
+    .menu ul ul {
+        float: none;
+        left: 0%;
+        width: 100%;
+    }
+    .menu ul ul a{
+        margin-left: 10%;
+    }
+    .menu ul ul ul {
+        left: 0%;
+        width: 100%;
+    }
+    .menu ul ul ul a{
+        margin-left: 20%;
+    }
+    .menu li {
+        display: block;
+        float: none;
+        min-height: 90px;
+        line-height: 90px;
+        background-color: rgba(34, 33, 33, 0.87);
+    }
+    .menu__expand-button {
+        position: absolute;
+        height: 90px;
+        width: 90px;
+        right: 0%;
+        float: none;
+        border-left: 2px solid rgb(253, 0, 0);
+    }
+
+    .menu__expand-button::before{
+        display: inline-block;
+        content: "";
+        background-image: url(/TestTask/img/expand.png);
+        background-repeat: no-repeat;
+        vertical-align: -50%;
+        width: 60px;
+        height: 60px;
+        background-size: 100%;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+
+    .menu__expand-button.active::before{
+        transform: rotate(-180deg);
+    }
+}
